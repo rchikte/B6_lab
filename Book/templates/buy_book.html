@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>buy_book</title>
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    </head>
+    <body>
+        <body style="background-color:rgb(199, 220, 238);"></body>
+        <h4 style="background-color:rgb(129, 26, 10);"><div style="border: 2px solid rgb(19, 4, 71)"> 
+            <div style="color:rgba(219, 233, 232, 0.973);">&emsp;Buy Book Here...!</div></div></h4>
+
+            <form action="{% url 'address_email' %}" method="post">
+                {% csrf_token %}
+                <!-- &emsp;Select & Buy Book from here.</div> -->
+                <div class="col-mb-3">
+                    &emsp;<label for="formFile" class="form-label"><b>You can also Buy the Book by Uploading the Photo of Book Cover page.</b></label>
+                    <input class="form-control" type="file" id="formFile">
+                </div>
+                <br> 
+
+                &emsp;<b>Select Book Category here.</b>
+                <select class="form-select" size="3" aria-label="size 3 select example">
+                    <option value="">Science Fiction</option>
+                    <option value="2">Programming</option>
+                    <option value="3">Novels</option>
+                    <option value="4">Comics</option>
+                    <option value="5">Text Book</option>
+                    <option value="6">Art</option>
+                    <option value="7">Autobiography</option>
+                    <option value="8">History</option>
+                    <option value="9">CookBook</option>
+                </select> 
+                <br>
+
+                <br>
+                &emsp;<b>Select Book from List.</b></div>
+                <select class="form-select" aria-label="Default select example">
+                    <option selected>Open this book list</option>
+                    {% for b in books %}
+                    <option value="1">Book ID - {{b.id}} ) -- {{b.name}}</option>
+                    {% endfor %}
+    
+                </select>             
+            </form>
+        <br><br>
+
+        <form action="{% url 'proceed_to_buy' %}" method="post">
+            {% csrf_token %}
+            &emsp;<input type="submit" value=" Buy Book" class="btn btn-primary">
+        </form>
+
+        <br><br><br><br>
+        <hr>
+        &emsp;<a href='/home/' class="btn btn-secondary"><b>Home</b></a>
+        &emsp;<a href='/new_book_entry/' class="btn btn-success"><b>New Book Entry</b></a>
+        &emsp;<a href='/show-all-books/' class="btn btn-warning"><b>Show All Books </b></a>
+        &emsp;<a href="/address_email/" class="btn btn-primary"><b>Book Delivery</b></a>
+        <hr>     
+    </body>
+</html>

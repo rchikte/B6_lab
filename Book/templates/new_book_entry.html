@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>New Book Entry</title>
+    </head>
+    <body>
+        <body style="background-color:rgb(77, 223, 96);"></body>  
+        <h1 style="background-color:rgb(129, 26, 10);"><div style="border: 2px solid rgb(19, 4, 71)"> 
+        <div style="color:rgba(219, 233, 232, 0.973);">New Book Entry / Update Book Details...!</div></div></h1>
+        <br><br>
+        <form action="{% url 'homepage' %}" method="post">
+        {% csrf_token %}
+
+        {% if single_book %}
+            Book ID:- <input type="number" name="bid" value="{{single_book.id}}" readonly> ( Auto Generated. Do not enter ID )<br><br>
+        {% endif %}
+        Book Name:- <input type="text" name="bname" value="{{single_book.name}}" placeholder="Enter Book Name"><br><br>
+        Book Price:- <input type="number" name="bprice" value="{{single_book.price}}" placeholder="Enter Book Price"><br><br>
+        Book Qty:- <input type="number" name="bqty" value="{{single_book.qty}}" placeholder="Enter Book Qty"><br><br>
+        <br>
+        <input type="submit" value="Submit">
+        </form>
+        <br><br>
+        <a href="{% url 'show_all_books' %}"><b>Show All Books</b></a>
+        <br><br>
+        <a href='/home/'><b>Home</b></a>
+        <br><br>
+        <hr>
+    </body>
+</html>
+ 
